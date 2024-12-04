@@ -1,0 +1,9 @@
+numpy
+opencv-python
+tensorflow
+torch
+torchvision
+dlib
+neo4j
+matplotlib
+jupyter
