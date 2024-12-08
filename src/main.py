@@ -1,7 +1,7 @@
 from image_processing.handshake_detection import detect_handshake
 from database.database_manager import create_network, add_handshake, get_network
 from visualization.graph_visualizer import visualize_network
-from utils.image_fetcher import search_images # Uncommented to use image fetcher
+from utils.image_fetcher import search_images,download_image,clear_data_directory # Uncommented to use image fetcher
 
 def main():
     # Step 1: Input celebrity's name
@@ -43,5 +43,8 @@ def main():
     network_data = get_network(graph)
     print("Handshake network nodes and edges:", network_data)
 
+clear_data_directory("data/")
+
 if __name__ == "__main__":
     main()
+
