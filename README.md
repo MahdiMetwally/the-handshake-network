@@ -35,7 +35,9 @@ The Handshake Network is an AI-powered system designed to explore and map relati
 - **Frameworks**: TensorFlow, PyTorch  
 - **Computer Vision**: OpenCV, MediaPipe  
 - **Graph Database**: Neo4j  
-- **Visualization**: D3.js, Plotly  
+- **Visualization**: D3.js, Plotly
+- **Google Vision API
+- **BingSearch API
 
 ---
 
