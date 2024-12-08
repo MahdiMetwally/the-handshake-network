@@ -1,7 +1,7 @@
-from image_processing.handshake_detection import detect_handshake
+from image_processing.handshake_detection import detect_handshake,recognize_celebrities #,analyze_image_with_Gvision
 from database.database_manager import create_network, add_handshake, get_network
 from visualization.graph_visualizer import visualize_network
-from utils.image_fetcher import search_images,download_image,clear_data_directory # Uncommented to use image fetcher
+from utils.image_fetcher import search_images,download_image,clear_data_directory
 
 def main():
     # Step 1: Input celebrity's name
@@ -27,10 +27,12 @@ def main():
             # Download the image
             download_image(url, image_path)
             
-            # Detect handshake in the image
+            #Detect handshake in the image
             if detect_handshake(image_path):
-                print(f"Handshake detected in image {image_path}")
-                # Add an edge to the graph (e.g., between the celebrity and an unnamed person)
+                #print(f"Handshake detected in image {image_path}")
+                recognize_celebrities(image_path)
+
+                #Add an edge to the graph (e.g., between the celebrity and an unnamed person)
                 add_handshake(graph, celebrity_name, f"Person {i + 1}")
         except Exception as e:
             print(f"Error processing image {url}: {e}")

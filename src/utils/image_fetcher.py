@@ -1,6 +1,7 @@
 import requests
 import os
 
+
 # Ensure the data directory exists
 os.makedirs("data", exist_ok=True)
 
@@ -28,7 +29,7 @@ def download_image(url, save_path):
         with open(save_path, "wb") as file:
             for chunk in response.iter_content(1024):  # Write in chunks to avoid memory issues
                 file.write(chunk)
-        print(f"Image downloaded: {save_path}")
+        #print(f"Image downloaded: {save_path}")
     except requests.exceptions.RequestException as e:
         print(f"Error downloading {url}: {e}")
 
