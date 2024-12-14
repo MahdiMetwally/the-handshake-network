@@ -4,7 +4,7 @@
 ---
 
 ## **Project Description**  
-The Handshake Network is an AI-powered system designed to explore and map relationships through the detection and identification of handshakes in images and videos. By leveraging cutting-edge computer vision and facial recognition technologies, this project identifies individuals involved in handshakes and creates a network of connections.
+The Handshake Network is an AI-powered system designed to explore and map relationships through the detection and identification of handshakes in images and videos. By leveraging cutting-edge computer vision and facial recognition technologies, this project identifies individuals involved in handshakes and visualizes a network of connections.
 
 ---
 
