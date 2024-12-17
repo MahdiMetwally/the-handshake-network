@@ -1,16 +1,12 @@
 import cv2
 import dlib
-import os
 import boto3
 
 # Initialize Rekognition client
 rekognition_client = boto3.client('rekognition')
 
-# Initialize Rekognition client
-rekognition_client = boto3.client('rekognition')
-
 # Function to recognize celebrities using *****Amazon Rekognition*****
-def recognize_celebrities(image_path):
+def recognize_celebrities(image_path, main):
     with open(image_path, 'rb') as image_file:
         image_bytes = image_file.read()
 
@@ -19,21 +15,36 @@ def recognize_celebrities(image_path):
         response = rekognition_client.recognize_celebrities(
             Image={'Bytes': image_bytes}
         )
-        confidence = response.get("Confidence") 
-        celebrities = response.get('CelebrityFaces', [])
         
+        celebrities = response.get('CelebrityFaces', [])
+        main_lower = main.lower()
+        other_celebrities = []
+
         if celebrities:
-            print("Celebrities recognized:")
+            #print("Celebrities recognized:")
             for celeb in celebrities:
-                #print(celeb)
                 name = celeb.get('Name', 'Unknown')
                 confidence = celeb.get('MatchConfidence', 'N/A')
-                print(f"Name: {name}, Confidence: {confidence}")
+                #print(f"Name: {name}, Confidence: {confidence}")
+
+                # Check if this celebrity is not the main one and add to the list
+                if name.lower() != main_lower:
+                    other_celebrities.append(name)
+
+            # If there are other celebrities detected, return the first one found
+            if other_celebrities:
+                #print(f"Other celebrity detected: {other_celebrities[0]}")
+                return other_celebrities[0]
+            else:
+                #print("No other celebrity detected.")
+                return None
         else:
-            print("No celebrities detected.")
-    
+            #print("No celebrities detected.")
+            return None
+
     except Exception as e:
-        print(f"Error recognizing celebrities: {e}")
+        #print(f"Error recognizing celebrities: {e}")
+        return None
 
 
 # Function for detecting handshakes (simple placeholder using face detection)
